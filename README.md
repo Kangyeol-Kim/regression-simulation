@@ -36,7 +36,7 @@ For Mean Regression, I used five methods for comparision.
   * Bias-Corrected method
 * Bayesian approach using normal likelihood
 
-Used model is <a href="https://www.codecogs.com/eqnedit.php?latex=y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" title='model'/></a>
+Used model is <a href="https://www.codecogs.com/eqnedit.php?latex=y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" title='y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)'/></a>
 
 I simulated 100 times. And find average of each criteria. In this setting, the perfomances of all methods are similar.
 
@@ -63,16 +63,16 @@ For Median Regression, I used four methods for comparision.
   * Bias-Corrected method
 * Bayesian approach using laplace likelihood
 
-Unlike mean regression case, there are no known conjugate distribution for updating prior multipled by laplace likelihood. Therefore, I should use Metropolis–Hastings algorithm within gibbs sampler. For this, I computed kernel form of each posterior.(<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma , \alpha, \beta" target="blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" /></a>
-) In this process, I set prior distribution to <a href="https://www.codecogs.com/eqnedit.php?latex=U(0, 1) , N(0,1), N(0, 1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?U(0, 1), N(0,1 ), N(0, 1)" /></a> for <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma , \alpha, \beta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" /></a> each. Also I set candidate distribution to normal distribution. In this structure, I can sample sigma, alpha and beta:
+Unlike mean regression case, there are no known conjugate distribution for updating prior multipled by laplace likelihood. Therefore, I should use Metropolis–Hastings algorithm within gibbs sampler. For this, I computed kernel form of each posterior.(<a href="https://www.codecogs.com/eqnedit.php?latex=\sigma , \alpha, \beta" target="blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" title="\sigma , \alpha, \beta"/></a>
+) In this process, I set prior distribution to <a href="https://www.codecogs.com/eqnedit.php?latex=U(0, 1) , N(0,1), N(0, 1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?U(0, 1), N(0,1 ), N(0, 1)" title="U(0, 1) , N(0,1), N(0, 1)"/></a> for <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma , \alpha, \beta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" title="\sigma , \alpha, \beta"/></a> each. Also I set candidate distribution to normal distribution. In this structure, I can sample sigma, alpha and beta:
 
 ***Gibbs sampler(arg)*** :
-1. Compute posterior distribution of <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma, \alpha, \beta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" /></a>
+1. Compute posterior distribution of <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma, \alpha, \beta" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma, \alpha, \beta" title="\sigma, \alpha, \beta"/></a>
 1. Sampling with posterior distribution
-    * <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma \sim p(\sigma|\alpha, \beta) \: with \: Metropolis-Hasting \: method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma \sim p(\sigma|\alpha, \beta) \: with \: Metropolis-Hasting \:method" /></a>
-    * <a href="https://www.codecogs.com/eqnedit.php?latex=\alpha\sim p(\alpha|\sigma, \beta) with \: Metropolis-Hasting \:method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha\sim p(\alpha|\sigma, \beta) with \: Metropolis-Hasting \:method" /></a>
+    * <a href="https://www.codecogs.com/eqnedit.php?latex=\sigma \sim p(\sigma|\alpha, \beta) \: with \: Metropolis-Hasting \: method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma \sim p(\sigma|\alpha, \beta) \: with \: Metropolis-Hasting \:method" title="\sigma \sim p(\sigma|\alpha, \beta) \: with \: Metropolis-Hasting \: method"/></a>
+    * <a href="https://www.codecogs.com/eqnedit.php?latex=\alpha\sim p(\alpha|\sigma, \beta) with \: Metropolis-Hasting \:method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha\sim p(\alpha|\sigma, \beta) with \: Metropolis-Hasting \:method" title="\alpha\sim p(\alpha|\sigma, \beta) with \: Metropolis-Hasting \:method"/></a>
 
-    * <a href="https://www.codecogs.com/eqnedit.php?latex=\beta \sim p(\beta|\sigma, \alpha) \: with \: Metropolis-Hasting \: method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta \sim p(\beta|\sigma, \alpha) \: with \: Metropolis-Hasting \: method" /></a>
+    * <a href="https://www.codecogs.com/eqnedit.php?latex=\beta \sim p(\beta|\sigma, \alpha) \: with \: Metropolis-Hasting \: method" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta \sim p(\beta|\sigma, \alpha) \: with \: Metropolis-Hasting \: method" title="\beta \sim p(\beta|\sigma, \alpha) \: with \: Metropolis-Hasting \: method"/></a>
 
 1. until stop condition
 
@@ -90,6 +90,3 @@ Same as Mean regression, I simulated 100 times using different data.
 | Bayesian | 1.00 | 6.2197379 |
 
 Actually, the Bayesian method had very wide confidence interval. I guess setting of prior and candidate distributions are improper.
-
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=" target="_blank"><img src="https://latex.codecogs.com/gif.latex?" /></a>
