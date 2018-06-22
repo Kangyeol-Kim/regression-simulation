@@ -36,7 +36,7 @@ For Mean Regression, I used five methods for comparision.
   * Bias-Corrected method
 * Bayesian approach using normal likelihood
 
-Used model is <a href="https://www.codecogs.com/eqnedit.php?latex=y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" target="blank"><img src="https://latex.codecogs.com/gif.latex?y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" title=""/></a>
+Used model is <a href="https://www.codecogs.com/eqnedit.php?latex=y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{i} = \alpha + \beta x_{i} + e_{i}, where \: \alpha=1, \beta=1, e_{i} \sim N(0, 1)" title='model'/></a>
 
 I simulated 100 times. And find average of each criteria. In this setting, the perfomances of all methods are similar.
 
