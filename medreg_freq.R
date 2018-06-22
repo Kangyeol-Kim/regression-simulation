@@ -1,27 +1,22 @@
-beta_standard_ci <- function(hat_beta, alpha, se) {
-  
-  z_alpha <- qnorm(1 - alpha/2)
-  lo <- hat_beta - z_alpha * se
-  up <- hat_beta + z_alpha * se
-  ci <- cbind(lo, up)
-  return(ci)
+f <- function(par, x, y) {
+  sum(abs(y - t(par %*% t(x))))
 }
 
-
 # Boot Beta
-boot_beta_maker <- function(hat_beta, boot_num, x, residual, seed) {
+
+boot_beta_maker <- function(boot_num, x, y, seed) {
   set.seed(seed)
   B <- boot_num
-  r <- residual
-  n <- length(r)
   boot_beta <- matrix(0, B, dim(x)[2])
+  n <- length(y)
   
-  for (b in 1:B) {
-    id <- sample(n, replace = T)
-    boot_r <- r[id]
-    boot_y <- x %*% hat_beta + boot_r
-    boot_obj <- OLS(boot_y, x)
-    boot_beta[b,] <- boot_obj$hat_beta
+  for (b in 1:B)
+  {
+    id <- sample(floor(n/3), replace = T)
+    boot.x <- x[id,]
+    boot.y <- y[id]
+    boot.obj <- optim(par = c(0.1, 0.1), f = f, x = boot.x, y = boot.y)
+    boot_beta[b,] <- boot.obj$par
   }
   return(boot_beta)
 }
